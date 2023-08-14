@@ -1,18 +1,17 @@
 const mongoose = require('mongoose')
-const { Schema } = mongoose 
+const { model, Schema } = mongoose 
 
-mongoose.connect(process.env.MONGO_URI,{
 
+
+const bookSchema = new Schema({
+    name: { type: String, required: true },
+    title: String,
+    year: Number,
+    quantity: Number,
+    imageURL: string
 })
 
-// const bookSchema = new Schema({
-//     name: { type: String, required: true },
-//     title: String,
-//     year: Number,
-//     quantity: Number,
-//     imageURL: string
-// })
+const Book = model('Books', bookSchema)
 
 // model and export: 
-const Books = mongoose.model('Book', bookSchema)
-module.exports = Books
+module.exports = Book;
